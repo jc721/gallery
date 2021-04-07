@@ -12,11 +12,16 @@ fetch('url').then(ResolveFuntion, RejectFuntion)
 
 */
 
+const app = document.querySelector("#app");
+let divR = document.createElement("div");
+divR.className = "row";
+app.appendChild(divR);
+
 fetch(URL)
-  .then(function (response) {
+  .then((response) => {
     return response.json();
   })
-  .then(function (data) {
+  .then((data) => {
     data.forEach(item => {
       let divC = document.createElement("div");
       divC.className = "column";
@@ -27,10 +32,6 @@ fetch(URL)
     });
   });
 
-const app = document.querySelector("#app");
 
-let divR = document.createElement("div");
-divR.className = "row";
-app.appendChild(divR);
 
 
