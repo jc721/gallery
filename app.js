@@ -14,14 +14,9 @@ fetch('url').then(ResolveFuntion, RejectFuntion)
 
 fetch(URL)
   .then(function (response) {
-    console.log(response);
     return response.json();
   })
   .then(function (data) {
-    console.log(data);
-    let divR = document.createElement("div");
-    divR.className = "row";
-    app.appendChild(divR);
     data.forEach(item => {
       let divC = document.createElement("div");
       divC.className = "column";
@@ -34,6 +29,8 @@ fetch(URL)
 
 const app = document.querySelector("#app");
 
-
+let divR = document.createElement("div");
+divR.className = "row";
+app.appendChild(divR);
 
 
