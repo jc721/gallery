@@ -19,7 +19,13 @@ app.appendChild(divR);
 
 fetch(URL)
   .then((response) => {
-    return response.json();
+    if (response.status >= 200 && response.status <= 299) {
+      return response.json();
+    } else {
+      throw new Error(
+        `Encountered something unexpected: ${response.status} ${response.statusText}`
+      );
+    }
   })
   .then((data) => {
     data.forEach(item => {
@@ -27,11 +33,14 @@ fetch(URL)
       divC.className = "column";
       let img = document.createElement("img");
       img.src = item.url;
+      let p = document.createElement("p");
+      p.textContent = item.author + " - " + item.title;
       divC.appendChild(img);
+      divC.appendChild(p);
       divR.appendChild(divC);
     });
+  })
+  .catch((error) => {
+    // Handle the error
+    console.log(error);
   });
-
-
-
-
